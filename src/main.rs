@@ -12,7 +12,7 @@ fn main() {
     for arg in args.iter().skip(1) { //Skip the first arg since we don't need it
         match arg_parse(arg) {
             Ok(roll) => {
-                println!("It works!");    
+                println!("[{}d{}*{}]: {:?}", roll.quant, roll.faces, roll.mult, generate_results(&roll));    
             }, 
             
             Err(error) => println!("{}", error),
@@ -28,6 +28,17 @@ fn char_vec_to_u32(char_vec: Vec<&char>) -> Result<u32, String> {
         Ok(int) => return Ok(int),
         Err(error) => return Err(format!("Conversion Error({})", error))
     }
+}
+
+fn generate_results(roll: &Roll) -> Vec<u32> {
+    let max = roll.quant * roll.faces;
+    let mut results = Vec::new();
+
+    for _ in 0..roll.mult {
+        results.push(fastrand::u32(roll.quant..max)); 
+    } 
+
+    return results;
 }
 
 fn arg_parse(string: &String) -> Result<Roll, String> {
@@ -87,7 +98,7 @@ fn arg_parse(string: &String) -> Result<Roll, String> {
     let mut roll = Roll {
         quant: char_vec_to_u32(vec_quant)?,
         faces: char_vec_to_u32(vec_faces)?,
-        mult: 0,
+        mult: 1,
     };
 
     if !vec_mult.is_empty() {
