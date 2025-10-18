@@ -1,6 +1,6 @@
 [package]
 name = "droll"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
 authors = ["Michael Huitt <michael.c.huitt@gmail.com>"]
 
