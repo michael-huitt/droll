@@ -35,7 +35,7 @@ fn generate_results(roll: &Roll) -> Vec<u32> {
     let mut results = Vec::new();
 
     for _ in 0..roll.mult {
-        results.push(fastrand::u32(roll.quant..max)); 
+        results.push(fastrand::u32(roll.quant..=max)); 
     } 
 
     return results;
