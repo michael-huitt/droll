@@ -84,13 +84,9 @@ fn arg_parse(string: &String) -> Result<Roll, String> {
                     }
                     
                     else if dflag == true && sflag == false {
-                        if vec_faces.is_empty() && *chr == '0' {
-                            break;
-                        } 
-
-                        else {
+                        if !vec_quant.is_empty() && *chr != '0' {
                             vec_faces.push(chr);
-                        }
+                        }    
                     } 
 
                     else {
