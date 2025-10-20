@@ -15,7 +15,7 @@ fn main() {
                 println!("[{}d{}*{}]: {:?}", roll.quant, roll.faces, roll.mult, generate_results(&roll));    
             }, 
             
-            Err(error) => println!("{}", error),
+            Err(error) => println!("[{}]: {}",arg ,error),
         } 
     }
 
